@@ -6,13 +6,15 @@ import { getClaimsFromStorage } from "../utils/storageUtils";
 import { handleClaimsChallenge } from "../fetch";
 import { getGraphClient } from "../graph";
 import { ResponseType } from "@microsoft/microsoft-graph-client";
-import dayjs from "dayjs";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
 import { PieChart, Pie, ResponsiveContainer, Cell } from "recharts";
 import Grid from "@mui/material/Unstable_Grid2";
 import SubCard from "./Card";
+import dayjs from "dayjs";
+import isToday from "dayjs/plugin/isToday";
+dayjs.extend(isToday);
 
 export default function BucketCard({ bucketID, department }) {
   const { instance } = useMsal();
@@ -112,7 +114,11 @@ export default function BucketCard({ bucketID, department }) {
       // Count todo and complete tasks
       if (task.percentComplete < 100) {
         data[0].value++;
-      } else if (task.percentComplete >= 100) {
+      } else if (
+        // Only count tasks completed today
+        task.percentComplete >= 100 &&
+        dayjs(task.completedDateTime).isToday()
+      ) {
         data[1].value++;
       }
       // Count todo tasks with high priority
@@ -128,8 +134,6 @@ export default function BucketCard({ bucketID, department }) {
       }
     }
   });
-
-  console.log(data);
 
   return (
     <Card
@@ -150,7 +154,7 @@ export default function BucketCard({ bucketID, department }) {
           <Grid xs={6}>
             <Grid container spacing={1} pl={5}>
               {data.map((entry, index) => (
-                <Grid xs={6}>
+                <Grid xs={6} key={data[index].name}>
                   <SubCard
                     title={data[index].name}
                     value={data[index].value}
