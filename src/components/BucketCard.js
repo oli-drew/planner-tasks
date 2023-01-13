@@ -168,7 +168,7 @@ export default function BucketCard({ bucketID, department }) {
                   data={data}
                   innerRadius={60}
                   outerRadius={80}
-                  paddingAngle={4}
+                  // paddingAngle={4}
                   dataKey="value"
                 >
                   {data.map((entry, index) => (
