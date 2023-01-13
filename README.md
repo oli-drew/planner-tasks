@@ -1,2 +1,3 @@
-# planner-tasks
-React App for an overview of all Tasks within a Microsoft Planner Plan
+# Planner Tasks
+
+React app to access the buckets and tasks from the Microsoft Planner Application using Microsoft Graph API
