@@ -14,7 +14,9 @@ import Grid from "@mui/material/Unstable_Grid2";
 import SubCard from "./Card";
 import dayjs from "dayjs";
 import isToday from "dayjs/plugin/isToday";
+import isSameOrBefore from "dayjs/plugin/isSameOrBefore";
 dayjs.extend(isToday);
+dayjs.extend(isSameOrBefore);
 
 export default function BucketCard({ bucketID, department }) {
   const { instance } = useMsal();
@@ -111,24 +113,32 @@ export default function BucketCard({ bucketID, department }) {
 
   tasks.map((task, index) => {
     if (tasks !== null) {
-      // Count todo and complete tasks
-      if (task.percentComplete < 100) {
+      // Count todo and complete tasks with a due date of today or before
+      if (
+        task.percentComplete < 100 &&
+        dayjs(task.dueDateTime).isSameOrBefore(dayjs(), "day")
+      ) {
         data[0].value++;
-      } else if (
-        // Only count tasks completed today
+      }
+      // Count todo tasks with high priority with a due date of today or before
+      if (
+        task.percentComplete < 100 &&
+        task.priority < 5 &&
+        dayjs(task.dueDateTime).isSameOrBefore(dayjs(), "day")
+      ) {
+        data[2].value++;
+      }
+      // Only count tasks completed today
+      if (
         task.percentComplete >= 100 &&
         dayjs(task.completedDateTime).isToday()
       ) {
         data[1].value++;
       }
-      // Count todo tasks with high priority
-      if (task.percentComplete < 100 && task.priority < 5) {
-        data[2].value++;
-      }
       // Count late tasks
       if (
         task.percentComplete < 100 &&
-        dayjs(task.dueDateTime).isBefore(dayjs())
+        dayjs(task.dueDateTime).isBefore(dayjs(), "day")
       ) {
         data[3].value++;
       }
@@ -152,7 +162,7 @@ export default function BucketCard({ bucketID, department }) {
       <Box>
         <Grid container spacing={0}>
           <Grid xs={6}>
-            <Grid container spacing={1} pl={5}>
+            <Grid container spacing={1} pl={{ xs: 1, xl: 5 }}>
               {data.map((entry, index) => (
                 <Grid xs={6} key={data[index].name}>
                   <SubCard
