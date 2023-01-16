@@ -183,7 +183,9 @@ function NavBar() {
               <div>
                 <IconButton
                   size="large"
-                  aria-label={`account of ${activeAccount.name}`}
+                  aria-label={`account of ${
+                    activeAccount ? activeAccount.name : "unknown user"
+                  }`}
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleMenu}
