@@ -147,18 +147,21 @@ export default function TasksPage() {
         <>
           {graphData ? (
             <>
-              {graphData.value.map((bucket, index) => {
-                if (index < 12) {
-                  return (
-                    <Grid xs={12} md={6} lg={4} key={bucket.id}>
-                      <BucketCard
-                        department={bucket.name}
-                        bucketID={bucket.id}
-                      />
-                    </Grid>
-                  );
-                }
-              })}
+              {graphData.value
+                .slice(0)
+                .reverse()
+                .map((bucket, index) => {
+                  if (index < 12) {
+                    return (
+                      <Grid xs={12} md={6} lg={4} key={bucket.id}>
+                        <BucketCard
+                          department={bucket.name}
+                          bucketID={bucket.id}
+                        />
+                      </Grid>
+                    );
+                  }
+                })}
             </>
           ) : null}
         </>
