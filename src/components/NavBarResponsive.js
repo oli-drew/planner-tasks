@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AuthenticatedTemplate,
   UnauthenticatedTemplate,
@@ -14,6 +14,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -47,7 +48,7 @@ function NavBar() {
     });
   };
 
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -55,6 +56,17 @@ function NavBar() {
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
+  };
+
+  // Account login menu
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -165,9 +177,38 @@ function NavBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <AuthenticatedTemplate>
-              <Button color="inherit" onClick={handleLogoutPopup}>
+              {/* <Button color="inherit" onClick={handleLogoutPopup}>
                 Logout - {activeAccount ? activeAccount.name : "Unknown"}
-              </Button>
+              </Button> */}
+              <div>
+                <IconButton
+                  size="large"
+                  aria-label={`account of ${activeAccount.name}`}
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleLogoutPopup}>Logout</MenuItem>
+                </Menu>
+              </div>
             </AuthenticatedTemplate>
             <UnauthenticatedTemplate>
               <Button color="inherit" onClick={handleLoginPopup}>

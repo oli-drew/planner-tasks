@@ -38,8 +38,8 @@ function HomePage() {
               color="text.secondary"
               component="p"
             >
-              Welcome to the Peter Drew Workwear Planner Tasks App. Click the
-              button below to view the Task Board.
+              Welcome to the Planner Tasks App. Click the button below to view
+              the Task Board.
             </Typography>
             <Stack
               sx={{ pt: 4 }}
