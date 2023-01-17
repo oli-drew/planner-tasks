@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "/subscriptions/b9bc7653-6db1-4cbb-b88c-eb4f90fa92ff/AppServices/subscriptions/b9bc7653-6db1-4cbb-b88c-eb4f90fa92ff/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/planner-tasks",
-    "appService.deploySubpath": "."
-}
