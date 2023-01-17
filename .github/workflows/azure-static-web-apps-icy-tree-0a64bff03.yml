@@ -31,9 +31,9 @@ jobs:
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
         env:
-          REACT_APP_AAD_APP_CLIENT_ID: "test"
-          REACT_APP_AAD_APP_TENANT_ID: "test"
-          REACT_APP_AAD_APP_PLAN_ID: "test"
+          REACT_APP_AAD_APP_CLIENT_ID: "45186e05-03cc-427c-91e3-f38e15add61c"
+          REACT_APP_AAD_APP_TENANT_ID: "993d2581-abc5-4140-a9f5-36eb0718f6a0"
+          REACT_APP_AAD_APP_PLAN_ID: "wMTFa5SRd0Od6IGnxX3jHJgAGYwv"
           REACT_APP_AAD_APP_REDIRECT_URI: "/"
           ###### End of Repository/Build Configurations ######
 
