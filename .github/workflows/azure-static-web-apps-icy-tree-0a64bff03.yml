@@ -30,11 +30,11 @@ jobs:
           app_location: "/" # App source code path
           api_location: "" # Api source code path - optional
           output_location: "build" # Built app content directory - optional
-          env: # Add environment variables here
-            CLIENT_ID: "test"
-            PLAN_ID: "test"
-            REDIRECT_URI: "test"
-            TENANT_ID: "test"
+        env: # Add environment variables here
+          CLIENT_ID: "test"
+          PLAN_ID: "test"
+          REDIRECT_URI: "test"
+          TENANT_ID: "test"
           ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
