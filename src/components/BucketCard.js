@@ -23,6 +23,15 @@ export default function BucketCard({ bucketID, department }) {
   const account = instance.getActiveAccount();
   const [graphData, setGraphData] = useState(null);
 
+  // Auto refresh tasks
+  const [refresh, setRefreshCounter] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRefreshCounter(!refresh);
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [refresh]);
+
   const resource = new URL(protectedResources.graphBucketTasks.endpoint)
     .hostname;
 
@@ -53,10 +62,6 @@ export default function BucketCard({ bucketID, department }) {
   );
 
   useEffect(() => {
-    if (!!graphData) {
-      return;
-    }
-
     if (!!error) {
       if (
         error.errorCode === "popup_window_error" ||
@@ -64,7 +69,6 @@ export default function BucketCard({ bucketID, department }) {
       ) {
         login(InteractionType.Redirect, request);
       }
-
       console.log(error);
       return;
     }
@@ -95,7 +99,7 @@ export default function BucketCard({ bucketID, department }) {
           }
         });
     }
-  }, [graphData, result, error, login, bucketID]);
+  }, [refresh, bucketID, result]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
