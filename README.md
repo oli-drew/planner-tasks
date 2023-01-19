@@ -25,7 +25,7 @@ Tasks are grouped by swimlanes, refered to as buckets within MS Planner, and the
 
 You can run this application locally by:
 
-1. Create an account on the ![Azure Portal](https://portal.azure.com/) if you dont already have one.
+1. Create an account on the [Azure Portal](https://portal.azure.com/) if you dont already have one.
 1. Create a new App Registration.
    1. Click App Registrations then New Registration
    1. Give the app a name e.g. Planer Tasks
@@ -48,7 +48,7 @@ You can run this application locally by:
 
 1. Record the ID of one of your plans from Microsoft Planenr
 
-   1. Create an account on ![Microsoft Planner](https://tasks.office.com/) this must be on the same tenant as your Azure Portal account.
+   1. Create an account on [Microsoft Planner](https://tasks.office.com/) this must be on the same tenant as your Azure Portal account.
    1. Create a new plan.
    1. Open the plan and record the planId from the address bar.
 
