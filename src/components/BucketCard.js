@@ -106,7 +106,7 @@ export default function BucketCard({ bucketID, department }) {
   }
 
   const data = [
-    { name: "Todo", value: 0 },
+    { name: "To-do", value: 0 },
     { name: "Complete", value: 0 },
     { name: "Priority", value: 0 },
     { name: "Late", value: 0 },
