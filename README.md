@@ -75,7 +75,7 @@ You can run this application locally by:
 4. Click the "Task Board" button to navigate to the tasks page.
 5. This application can be installed as a PWA.
 
-### Screenshots
+### Screenshot
 
 ![Planner Tasks Tasks Page](/readme-files/tasks.png)
 
