@@ -9,6 +9,9 @@ The application uses MSAL React to sign-in a user and obtain a JWT access token 
 
 Tasks are grouped by swimlanes, refered to as buckets within MS Planner, and the status of each task wihin a bucket grouped by To-do, Complete, Priority, and Late.
 
+This project was based on the following Microsoft example:
+https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/2-Authorization-I/1-call-graph
+
 ---
 
 ## Table of Contents
@@ -27,8 +30,8 @@ You can run this application locally by:
 
 1. Create an account on the [Azure Portal](https://portal.azure.com/) if you dont already have one.
 1. Create a new App Registration.
-   1. Click App Registrations then New Registration
-   1. Give the app a name e.g. Planer Tasks
+   1. Click App Registrations then, click New Registration
+   1. Give the app a name e.g. Planner Tasks
    1. Select Accounts in this organizational directory only.
    1. Click Register.
 1. Add a platform and redirect URIs
